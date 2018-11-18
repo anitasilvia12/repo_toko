@@ -20,7 +20,7 @@ app.listen(port,function(){
 })
 
 app.get('/', function(req, res) {
-	res.send("It's Work!")
+	res.send("ini jalan yah. index!")
 });
 
 //setup db
