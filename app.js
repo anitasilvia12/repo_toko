@@ -22,3 +22,15 @@ app.listen(port,function(){
 app.get('/', function(req, res) {
 	res.send("It's Work!")
 });
+
+//setup db
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/toko-noonline');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	// we're connected!
+	console.log('Connected to MongoDB')
+});
