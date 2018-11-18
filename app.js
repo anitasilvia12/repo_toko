@@ -30,5 +30,5 @@ app.listen(port,function(){
 })
 
 app.get('/', function(req, res) {
-	res.send("ini jalan yah. di index!")
+	res.send("ini jalan yah. di index sadud bau hitut!")
 });
