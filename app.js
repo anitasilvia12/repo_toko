@@ -1,5 +1,15 @@
 var express = require('express');
 var path = require('path');
+var mongoose = require('mongoose');
+//connection sintax
+mongoose.connect('mongodb://localhost/toko-online');
+//setup db
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	// we're connected!
+	console.log('Connected to MongoDB')
+});
 
 //initial app
 var app = express();
@@ -12,7 +22,6 @@ app.set("View engine","ejs");
 app.use(express.static(path.join(__dirname,"")));
 
 //setup server
-
 var port = 3000;
 app.listen(port,function(){
 
@@ -21,16 +30,4 @@ app.listen(port,function(){
 
 app.get('/', function(req, res) {
 	res.send("ini jalan yah. index!")
-});
-
-//setup db
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/toko-noonline');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-	// we're connected!
-	console.log('Connected to MongoDB')
 });
