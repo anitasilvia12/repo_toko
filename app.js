@@ -1,14 +1,15 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
+var config = require("./config/database");
 //connection sintax
-mongoose.connect('mongodb://localhost/toko-online');
+mongoose.connect(config.database);
 //setup db
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	// we're connected!
-	console.log('Connected to MongoDB')
+	console.log('Sudah Connect lagi ini bapa')
 });
 
 //initial app
